@@ -8,6 +8,10 @@ function ProductionDetail() {
   
   useEffect(()=>{
     //GET to '/productions/:id'
+    fetch(`/productions/${params.id}`)
+    .then(res => res.json())
+    .then(setProduction)
+    // .then(data => setProduction(data))
  
   },[])
   

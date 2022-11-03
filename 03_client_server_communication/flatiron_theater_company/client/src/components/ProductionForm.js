@@ -29,6 +29,7 @@ function ProductionForm({addProduction}) {
     })
     .then(res => {
       if(res.ok){
+        console.log(res)
         res.json().then(data => {
           addProduction(data)
           history.push('/')
