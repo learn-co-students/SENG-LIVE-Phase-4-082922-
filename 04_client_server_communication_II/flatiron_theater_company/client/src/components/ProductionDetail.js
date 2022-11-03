@@ -5,16 +5,16 @@ import styled from 'styled-components'
 function ProductionDetail({deleteProduction}) {
   const [production, setProduction] = useState({crew_members:[], performers_and_roles:[]})
   
-  const params = useParams()
+  const {id} = useParams()
   const history = useHistory()
   useEffect(()=>{
     //GET to '/productions/:id'
-    fetch(`/productions/${params.id}`)
+    fetch(`/productions/${id}`)
     .then(res => { 
       if(res.ok){
         res.json().then(data => setProduction(data))
       } else {
-        res.json().then(data => setErrors(data.error))
+        res.json().then(data => console.log(data))
       }
     })
   },[])
@@ -25,7 +25,7 @@ function ProductionDetail({deleteProduction}) {
   }
   
 
-  const {id, title, budget, genre, image,description} = production 
+  const {title, budget, genre, image,description} = production 
   //Place holder data, will be replaced in the assosiations lecture. 
   const crew_members = ['Lily-Mai Harding', 'Cathy Luna', 'Tiernan Daugherty', 'Giselle Nava', 'Alister Wallis', 'Aishah Rowland', 'Keiren Bernal', 'Aqsa Parrish', 'Daanyal Laing', 'Hollie Haas']
   return (

@@ -32,7 +32,6 @@ function EditProductionForm({updateProduction}) {
   }
     return (
       <div className='App'>
-      {errors?errors.map(e => <div>{e}</div>):null}
       <Form onSubmit={onSubmit}>
         <label>Title </label>
         <input type='text' name='title' value={formData.title} onChange={handleChange} />
