@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 function ProductionDetail({deleteProduction}) {
   const [production, setProduction] = useState({crew_members:[], performers_and_roles:[]})
+  const [errors, setErrors] = useState();
   
   const {id} = useParams()
   const history = useHistory()
@@ -21,9 +22,22 @@ function ProductionDetail({deleteProduction}) {
 
   function handleDelete(){
     //DELETE to `/productions/${params.id}`
- 
+    console.log('handle delete')
+    fetch(`/productions/10000`,{
+      method:'DELETE'
+    })
+    .then(res => {
+      if(res.ok){
+        console.log(res)
+        res.json().then(deleteProduction(production.id))
+      } else {
+        res.json().then(data => setErrors(`${Object.keys(data.errors)[0]} : ${Object.values(data.errors)[0]}`))
+      }
+      
+    })
   }
-  
+
+  if(errors) return <h1>{errors}</h1>
 
   const {title, budget, genre, image,description} = production 
   //Place holder data, will be replaced in the assosiations lecture. 

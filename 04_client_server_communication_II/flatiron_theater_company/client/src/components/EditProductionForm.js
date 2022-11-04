@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
 
@@ -12,7 +12,10 @@ function EditProductionForm({updateProduction}) {
     director:'',
     description:''
   })
+  const [errors, setErrors] = useState()
   const {id} = useParams()
+  const history = useHistory()
+
   useEffect(() => {
     fetch(`/productions/${id}`)
     .then(res => res.json())
@@ -28,8 +31,24 @@ function EditProductionForm({updateProduction}) {
   function onSubmit(e){
     e.preventDefault()
     //PATCH to `/productions/${id}`
-    
+    fetch(`/productions/${id}`,{
+      method:'PATCH',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({...formData})
+    })
+    .then(res => {
+      if(res.ok){
+        console.log(res)
+        res.json().then(data => {
+          updateProduction(data)
+          history.push(`/productions/${id}`)
+        }) 
+      } else {
+        res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} : ${e[1]}`)))
+      }
+    })
   }
+ 
     return (
       <div className='App'>
       <Form onSubmit={onSubmit}>
@@ -53,6 +72,7 @@ function EditProductionForm({updateProduction}) {
       
         <input type='submit' value='Update Production' />
       </Form>
+      {errors? errors.map(error => <h2 style={{color:'red'}}>{error}</h2>) :null}
       </div>
     )
   }
