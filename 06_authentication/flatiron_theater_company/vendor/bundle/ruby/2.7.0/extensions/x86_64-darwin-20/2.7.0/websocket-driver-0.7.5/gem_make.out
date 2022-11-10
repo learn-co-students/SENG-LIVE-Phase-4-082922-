@@ -1,0 +1,15 @@
+current directory: /Users/x/flatiron/082922/SENG-LIVE-Phase-4-082922-/06_authentication/flatiron_theater_company/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+/Users/x/.rvm/rubies/ruby-2.7.4/bin/ruby -I /Users/x/.rvm/rubies/ruby-2.7.4/lib/ruby/2.7.0 -r ./siteconf20221109-2696-qf13q1.rb extconf.rb
+creating Makefile
+
+current directory: /Users/x/flatiron/082922/SENG-LIVE-Phase-4-082922-/06_authentication/flatiron_theater_company/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /Users/x/flatiron/082922/SENG-LIVE-Phase-4-082922-/06_authentication/flatiron_theater_company/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.bundle
+
+current directory: /Users/x/flatiron/082922/SENG-LIVE-Phase-4-082922-/06_authentication/flatiron_theater_company/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.5/ext/websocket-driver
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 websocket_mask.bundle ./.gem.20221109-2696-1oaps4m

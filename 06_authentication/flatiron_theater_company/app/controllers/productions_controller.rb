@@ -6,7 +6,7 @@ class ProductionsController < ApplicationController
 
     def show
         production = Production.find(params[:id])
-        render json: production, include: :cast_members, status: :ok
+        render json: production, status: :ok
     end 
 
     def create
@@ -15,9 +15,6 @@ class ProductionsController < ApplicationController
     end 
 
     def update 
-       #Review error handling and create a rescue for RecordNotFound
-        #Add the ! to update so it raises an exception
-
         production = Production.find(params[:id])
         production.update!(production_params)
         render json: production, status: :accepted
@@ -31,7 +28,6 @@ class ProductionsController < ApplicationController
 
     private
     
-    #Review strong params and why they are useful with updates
     def production_params
         params.permit(:title, :genre, :description, :budget, :image, :director, :ongoing)
     end 

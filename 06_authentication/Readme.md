@@ -9,7 +9,7 @@
 - [ ] Observe a full-stack authentication workflow via sign up page
 
 Users -< Tickets > Producitons 
-![associations.png](assets/associations.png)
+![associations.png](assets/productions_tickets_users.png)
 
 ## Deliverables
 - Review Authentication and password security with the following topics
